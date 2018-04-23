@@ -1,0 +1,26 @@
+PODS:
+  - DZNEmptyDataSet (1.8.1)
+  - FontAwesome.swift (1.3.1)
+  - NVActivityIndicatorView (4.2.0):
+    - NVActivityIndicatorView/Presenter (= 4.2.0)
+  - NVActivityIndicatorView/Presenter (4.2.0)
+
+DEPENDENCIES:
+  - DZNEmptyDataSet
+  - FontAwesome.swift
+  - NVActivityIndicatorView
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - DZNEmptyDataSet
+    - FontAwesome.swift
+    - NVActivityIndicatorView
+
+SPEC CHECKSUMS:
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  FontAwesome.swift: 050a75c6b94db0b082f39bde5b111c5c64d62a83
+  NVActivityIndicatorView: 75c9634073e03b31d7e2748cd2417feab1206195
+
+PODFILE CHECKSUM: 1ebcf912d2dac7dc8ada16f221aa09de47c4ef44
+
+COCOAPODS: 1.5.0
