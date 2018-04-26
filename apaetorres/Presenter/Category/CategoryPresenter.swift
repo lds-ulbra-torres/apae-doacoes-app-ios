@@ -6,7 +6,22 @@
 //  Copyright © 2018 DatIn. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+protocol CategoryView: NSObjectProtocol {
+    
+    func startLoading()
+    func finishLoading()
+    func setCategories(categories: [CategoryViewData])
+    func setEmptyCategories()
+    func searchCategory(categories: [CategoryViewData])
+    func error()
+    
+    func setBackgroundColorNavigation(hexString : String)
+    func setBackgroundColorCollectionView(hexString: String)
+    func setColorLargeTitle(color: UIColor)
+    func setHairLine()
+}
 
 class CategoryPresenter {
     
@@ -19,14 +34,21 @@ class CategoryPresenter {
     
     func attachView(view: CategoryView) {
         categoryView = view
+        setupView()
     }
     
     func detachView() {
         categoryView = nil
     }
     
+    func setupView(){
+        categoryView?.setBackgroundColorNavigation(hexString: "61B963")
+        categoryView?.setBackgroundColorCollectionView(hexString: "F3F0E9")
+        categoryView?.setColorLargeTitle(color: .white)
+        categoryView?.setHairLine()
+    }
+    
     func getCategories() {
-        
         self.categoryView?.startLoading()
         categoryService.getCategories { [weak self] data in
             self?.categoryView?.finishLoading()
@@ -44,5 +66,11 @@ class CategoryPresenter {
                 self?.categoryView?.setCategories(categories: mappedCategories)
             }
         }
+    }
+    
+    func search(filter: String, categories: [CategoryViewData]){
+        let searchPredicate = NSPredicate(format: "description CONTAINS[c] %@", filter,filter)
+        let array = (categories as NSArray).filtered(using: searchPredicate)
+        self.categoryView?.searchCategory(categories: array as! [CategoryViewData])
     }
 }

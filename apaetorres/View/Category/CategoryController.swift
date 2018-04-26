@@ -16,74 +16,71 @@ class CategoryController: UICollectionViewController, UICollectionViewDelegateFl
     
     let categoryFlowLayout = UICollectionViewFlowLayout()
     
-    private let categoryPresenter   = CategoryPresenter(service: CategoryService())
-    var categoriesToDisplay         = [CategoryViewData]()
-    var isLoading                   = false
-    var isEmpty                     = false
-    var isError                     = false
+    private let categoryPresenter       = CategoryPresenter(service: CategoryService())
+    private let cardCategoryPresenter   = CardCategoryPresenter()
+    var categoriesToDisplay             = [CategoryViewData]()
+    var categoriesFilteredToDisplay     = [CategoryViewData]()
+    var isLoading                       = false
+    var isEmpty                         = false
+    var isError                         = false
+    let searchController                = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureSearchController()
         customizeDZNEmptyDataSet()
         categoryPresenter.attachView(view: self)
         categoryPresenter.getCategories()
-        
-        self.navigationController?.view.backgroundColor = UIColor(hexString: "61B963")
-        
-        if let navigationController = self.navigationController, !navigationController.navigationBar.isHidden {
-            navigationController.navigationBar.hideHairline()
-        }
-        
-        if #available(iOS 11.0, *) {
-            self.navigationController?.navigationBar.largeTitleTextAttributes = [
-                NSAttributedStringKey.foregroundColor: UIColor.white
-            ]
-        }
         self.collectionView!.register(UINib(nibName: "CategoryCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
-        
         categoryFlowLayout.sectionInset = UIEdgeInsets(top: 10, left: 20, bottom: 20, right: 20)
-        categoryFlowLayout.headerReferenceSize = CGSize(width: (collectionView?.frame.width)!, height: 54)
-        
         self.collectionView?.collectionViewLayout = categoryFlowLayout
-        
-        self.collectionView?.backgroundColor = UIColor(hexString: "F3F0E9")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
+    func configureSearchController(){
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.searchResultsUpdater = self
+        searchController.delegate = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        
+        let scb = searchController.searchBar
+        scb.tintColor = UIColor.white
+        scb.barTintColor = UIColor.white
+        
+        if let textfield = scb.value(forKey: "searchField") as? UITextField {
+            textfield.textColor = UIColor.blue
+            if let backgroundview = textfield.subviews.first {
+                backgroundview.backgroundColor = UIColor.white
+                backgroundview.layer.cornerRadius = 10;
+                backgroundview.clipsToBounds = true;
+            }
+        }
+    }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return categoriesToDisplay.count
+        return categoriesFilteredToDisplay.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CategoryCell
         cell.layer.masksToBounds = true
         cell.backgroundColor = .white
-        cell.backgroundImage.image = #imageLiteral(resourceName: "farmacia")
+        cardCategoryPresenter.attachView(categoryViewData: categoriesFilteredToDisplay[indexPath.row], view: cell)
         return cell
     }
 
     // MARK: UICollectionViewDelegate
-    
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if (kind == UICollectionElementKindSectionHeader) {
-            let headerView =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "CollectionViewHeader", for: indexPath) as! SearchCollectionReusableView
-            return headerView
-        }
-        return UICollectionReusableView()
-    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             let padding: CGFloat =  60
@@ -94,32 +91,39 @@ class CategoryController: UICollectionViewController, UICollectionViewDelegateFl
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "customer", sender: nil)
     }
+    
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.searchController.searchBar.resignFirstResponder()
+    }
 }
 
-extension CategoryController : UISearchBarDelegate {
+extension CategoryController : UISearchControllerDelegate ,UISearchResultsUpdating {
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if(searchText.isEmpty){
-//            self.collectionView?.reloadData()
+    func updateSearchResults(for searchController: UISearchController) {
+        if !(searchController.searchBar.text?.isEmpty)! {
+            self.categoryPresenter.search(filter: searchController.searchBar.text!, categories: categoriesToDisplay)
         }
-        print(searchText)
+    }
+    
+    func didDismissSearchController(_ searchController: UISearchController) {
+        if (searchController.searchBar.text?.isEmpty)!{
+            categoriesFilteredToDisplay = categoriesToDisplay
+            self.collectionView?.reloadData()
+        }
     }
 }
 
 // - MARK: CategoryView
 extension CategoryController: CategoryView {
     func startLoading() {
-        print("Starting...")
         isLoading = true
     }
     
     func finishLoading() {
-        print("Finishing!")
         isLoading = false
     }
     
     func setEmptyCategories() {
-        print("Set empty categories")
         categoriesToDisplay = []
         DispatchQueue.main.async { [unowned self] in
             self.collectionView?.reloadData()
@@ -128,16 +132,43 @@ extension CategoryController: CategoryView {
     
     func setCategories(categories: [CategoryViewData]) {
         categoriesToDisplay = categories
+        categoriesFilteredToDisplay = categories
+        DispatchQueue.main.async { [unowned self] in
+            self.collectionView?.reloadData()
+        }
+    }
+    
+    func searchCategory(categories: [CategoryViewData]) {
+        categoriesFilteredToDisplay = categories
         DispatchQueue.main.async { [unowned self] in
             self.collectionView?.reloadData()
         }
     }
     
     func error() {
-        print("Error no server")
         isError = true
         DispatchQueue.main.async { [unowned self] in
             self.collectionView?.reloadData()
+        }
+    }
+    
+    func setBackgroundColorNavigation(hexString: String) {
+        navigationController?.view.backgroundColor = UIColor(hexString: hexString)
+    }
+    
+    func setBackgroundColorCollectionView(hexString: String) {
+        collectionView?.backgroundColor = UIColor(hexString: hexString)
+    }
+    
+    func setColorLargeTitle(color: UIColor) {
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [
+            NSAttributedStringKey.foregroundColor: color
+        ]
+    }
+    
+    func setHairLine() {
+        if let navigationController = self.navigationController, !navigationController.navigationBar.isHidden {
+            navigationController.navigationBar.hideHairline()
         }
     }
 }

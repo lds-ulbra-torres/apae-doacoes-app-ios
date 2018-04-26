@@ -19,6 +19,26 @@ class CustomerController: UICollectionViewController, UICollectionViewDelegateFl
         super.viewDidLoad()
         
         title = "Farmácias"
+        
+        let searchController = UISearchController(searchResultsController: nil)
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = true
+        
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        
+        let scb = searchController.searchBar
+        scb.tintColor = UIColor.white
+        scb.barTintColor = UIColor.white
+        
+        if let textfield = scb.value(forKey: "searchField") as? UITextField {
+            textfield.textColor = UIColor.blue
+            if let backgroundview = textfield.subviews.first {
+                backgroundview.backgroundColor = UIColor.white
+                backgroundview.layer.cornerRadius = 10;
+                backgroundview.clipsToBounds = true;
+            }
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -27,7 +47,6 @@ class CustomerController: UICollectionViewController, UICollectionViewDelegateFl
         self.collectionView!.register(UINib(nibName: "CustomerCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
         
         categoryFlowLayout.sectionInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
-        categoryFlowLayout.headerReferenceSize = CGSize(width: (collectionView?.frame.width)!, height: 54)
         
         self.collectionView?.collectionViewLayout = categoryFlowLayout
         
@@ -68,14 +87,6 @@ class CustomerController: UICollectionViewController, UICollectionViewDelegateFl
     }
 
     // MARK: UICollectionViewDelegate
-
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if (kind == UICollectionElementKindSectionHeader) {
-            let headerView =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "CollectionViewHeader", for: indexPath) as! SearchCollectionReusableView
-            return headerView
-        }
-        return UICollectionReusableView()
-    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let padding: CGFloat =  40

@@ -8,6 +8,7 @@ target 'apaetorres' do
   pod 'FontAwesome.swift'
   pod 'DZNEmptyDataSet'
   pod 'NVActivityIndicatorView'
+  pod 'Kingfisher', '~> 4.0'
 
   target 'apaetorresTests' do
     inherit! :search_paths

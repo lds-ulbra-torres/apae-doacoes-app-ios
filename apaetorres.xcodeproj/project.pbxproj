@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8E1539E7207FF67700D977D5 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1539E6207FF67700D977D5 /* Category.swift */; };
 		8E1539EA207FF68B00D977D5 /* CategoryViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1539E9207FF68B00D977D5 /* CategoryViewData.swift */; };
-		8E1539EC207FF69900D977D5 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1539EB207FF69900D977D5 /* CategoryView.swift */; };
 		8E1539EE207FF6B300D977D5 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1539ED207FF6B300D977D5 /* Customer.swift */; };
 		8E1539F0207FF6C000D977D5 /* CustomerViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1539EF207FF6C000D977D5 /* CustomerViewData.swift */; };
 		8E1539F2207FF6D000D977D5 /* CustomerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1539F1207FF6D000D977D5 /* CustomerView.swift */; };
@@ -27,12 +26,12 @@
 		8E86CF15206E925D00C13D44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E86CF13206E925D00C13D44 /* LaunchScreen.storyboard */; };
 		8E86CF20206E925D00C13D44 /* apaetorresTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E86CF1F206E925D00C13D44 /* apaetorresTests.swift */; };
 		8E86CF2B206E925D00C13D44 /* apaetorresUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E86CF2A206E925D00C13D44 /* apaetorresUITests.swift */; };
-		8E86CF3B206EBC3B00C13D44 /* SearchCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E86CF3A206EBC3B00C13D44 /* SearchCollectionReusableView.swift */; };
 		8EB52D63208BFEB600B54140 /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB52D62208BFEB600B54140 /* CategoryService.swift */; };
 		8EB52D65208C462000B54140 /* ActivityIndicatorViewCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB52D64208C462000B54140 /* ActivityIndicatorViewCustom.swift */; };
 		8EB5EC802081C5340016E11E /* CustomerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB5EC7E2081C5340016E11E /* CustomerCell.swift */; };
 		8EB5EC812081C5340016E11E /* CustomerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EB5EC7F2081C5340016E11E /* CustomerCell.xib */; };
 		8ECF1E4C2085AA8B00440487 /* DetailCustomerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECF1E4B2085AA8B00440487 /* DetailCustomerController.swift */; };
+		8ED1381A209154400000126B /* CardCategoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED13819209154400000126B /* CardCategoryPresenter.swift */; };
 		92B4DA6A8080B1A95F1BEF8E /* Pods_apaetorresTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3784408C3BD6D09919DAE0CA /* Pods_apaetorresTests.framework */; };
 		BD0D6E8B52C354B24732FBF4 /* Pods_apaetorres.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA1C7A622AF75BF2BA3586F9 /* Pods_apaetorres.framework */; };
 		E5ACAC48A161EBC271A6E6C7 /* Pods_apaetorresUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4748420BDD331E6C87EC9DC /* Pods_apaetorresUITests.framework */; };
@@ -62,7 +61,6 @@
 		8B5E47DA1A0069736E6A8BC6 /* Pods-apaetorresTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-apaetorresTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-apaetorresTests/Pods-apaetorresTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8E1539E6207FF67700D977D5 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		8E1539E9207FF68B00D977D5 /* CategoryViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewData.swift; sourceTree = "<group>"; };
-		8E1539EB207FF69900D977D5 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		8E1539ED207FF6B300D977D5 /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		8E1539EF207FF6C000D977D5 /* CustomerViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerViewData.swift; sourceTree = "<group>"; };
 		8E1539F1207FF6D000D977D5 /* CustomerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerView.swift; sourceTree = "<group>"; };
@@ -86,12 +84,12 @@
 		8E86CF26206E925D00C13D44 /* apaetorresUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = apaetorresUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E86CF2A206E925D00C13D44 /* apaetorresUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = apaetorresUITests.swift; sourceTree = "<group>"; };
 		8E86CF2C206E925D00C13D44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8E86CF3A206EBC3B00C13D44 /* SearchCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionReusableView.swift; sourceTree = "<group>"; };
 		8EB52D62208BFEB600B54140 /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
 		8EB52D64208C462000B54140 /* ActivityIndicatorViewCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorViewCustom.swift; sourceTree = "<group>"; };
 		8EB5EC7E2081C5340016E11E /* CustomerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerCell.swift; sourceTree = "<group>"; };
 		8EB5EC7F2081C5340016E11E /* CustomerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomerCell.xib; sourceTree = "<group>"; };
 		8ECF1E4B2085AA8B00440487 /* DetailCustomerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCustomerController.swift; sourceTree = "<group>"; };
+		8ED13819209154400000126B /* CardCategoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCategoryPresenter.swift; sourceTree = "<group>"; };
 		C20D8EACB7E055A5919C6EED /* Pods-apaetorres.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-apaetorres.debug.xcconfig"; path = "Pods/Target Support Files/Pods-apaetorres/Pods-apaetorres.debug.xcconfig"; sourceTree = "<group>"; };
 		C4748420BDD331E6C87EC9DC /* Pods_apaetorresUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_apaetorresUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C7C82E0AB979CF6C978229 /* Pods-apaetorresUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-apaetorresUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-apaetorresUITests/Pods-apaetorresUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -184,7 +182,6 @@
 			children = (
 				8E1539E6207FF67700D977D5 /* Category.swift */,
 				8E1539E9207FF68B00D977D5 /* CategoryViewData.swift */,
-				8E1539EB207FF69900D977D5 /* CategoryView.swift */,
 				8EB52D62208BFEB600B54140 /* CategoryService.swift */,
 			);
 			path = Category;
@@ -223,6 +220,7 @@
 				8E6C4CAF20812C8E00700A32 /* CategoryLayout.swift */,
 				8E6C4CB3208157F800700A32 /* CategoryCell.swift */,
 				8E6C4CB4208157F800700A32 /* CategoryCell.xib */,
+				8ED13819209154400000126B /* CardCategoryPresenter.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -271,7 +269,6 @@
 				8E86CF11206E925D00C13D44 /* Assets.xcassets */,
 				8E86CF13206E925D00C13D44 /* LaunchScreen.storyboard */,
 				8E86CF16206E925D00C13D44 /* Info.plist */,
-				8E86CF3A206EBC3B00C13D44 /* SearchCollectionReusableView.swift */,
 			);
 			path = apaetorres;
 			sourceTree = "<group>";
@@ -471,12 +468,14 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-apaetorres/Pods-apaetorres-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
 				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -553,14 +552,13 @@
 				8E6C4CB020812C8E00700A32 /* CategoryLayout.swift in Sources */,
 				8E1539F2207FF6D000D977D5 /* CustomerView.swift in Sources */,
 				8E1539EE207FF6B300D977D5 /* Customer.swift in Sources */,
-				8E86CF3B206EBC3B00C13D44 /* SearchCollectionReusableView.swift in Sources */,
 				8E86CF0B206E925D00C13D44 /* AppDelegate.swift in Sources */,
+				8ED1381A209154400000126B /* CardCategoryPresenter.swift in Sources */,
 				8E1539EA207FF68B00D977D5 /* CategoryViewData.swift in Sources */,
 				8E1539FE207FF7DF00D977D5 /* Extension.swift in Sources */,
 				8E1539FC207FF7A100D977D5 /* CategoryController.swift in Sources */,
 				8E1539E7207FF67700D977D5 /* Category.swift in Sources */,
 				8ECF1E4C2085AA8B00440487 /* DetailCustomerController.swift in Sources */,
-				8E1539EC207FF69900D977D5 /* CategoryView.swift in Sources */,
 				8E1539F8207FF74100D977D5 /* CustomerController.swift in Sources */,
 				8E6C4CB5208157F800700A32 /* CategoryCell.swift in Sources */,
 				8EB5EC802081C5340016E11E /* CustomerCell.swift in Sources */,
@@ -731,9 +729,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DZ369WUPH8;
+				DEVELOPMENT_TEAM = FV334A5ZR5;
 				INFOPLIST_FILE = apaetorres/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apaetorres;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -748,9 +746,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DZ369WUPH8;
+				DEVELOPMENT_TEAM = FV334A5ZR5;
 				INFOPLIST_FILE = apaetorres/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apaetorres;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CategoryCell: UICollectionViewCell {
     
@@ -34,4 +35,16 @@ class CategoryCell: UICollectionViewCell {
         self.layer.shadowPath = UIBezierPath(roundedRect:self.bounds, cornerRadius:self.contentView.layer.cornerRadius).cgPath
     }
 
+}
+
+extension CategoryCell: CardCategoryView {
+    func setTitle(text: String) {
+        self.titleLabel.text = text
+    }
+    
+    func setBackgroundImage(url: URL) {
+        let resource = ImageResource(downloadURL: url)
+        self.backgroundImage.kf.indicatorType = .activity
+        self.backgroundImage.kf.setImage(with: resource)
+    }
 }

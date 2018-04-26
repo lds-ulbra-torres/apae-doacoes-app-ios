@@ -9,7 +9,6 @@
 import Foundation
 
 struct CategoryViewData {
-    
     let id: String?
     let name: String?
     let description: String?
@@ -21,5 +20,4 @@ struct CategoryViewData {
         self.description = description
         self.photo = "http://apaetorres.org.br/doacoes\(photo)"
     }
-    
 }
